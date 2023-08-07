@@ -1,0 +1,64 @@
+Clear the Screen
+As you work in Terminal, your window may fill up with commands and their output. The command line itself will always be the last line, but the rest of the window can become cluttered with the residue of earlier commands. Here are some ideas for decluttering the window:
+• If you find all that text distracting and want to clear the window (so it looks much like it did when you started the session), enter clear.
+• Another option is to press Control-L, which moves your command line up to the top of the window with empty space below it (you can still scroll up to see what was on the screen earlier).
+• To hide text that scrolled by in the Terminal window (perhaps to keep someone else from seeing what you did), press Command-K.
+• To clear the screen and prevent someone from scrolling back in Terminal to see your earlier activity (handy when you log out!), press Command-Option-K.
+
+
+As of my last knowledge update in September 2021, Streamlit does not have built-in support for interactive debugging like traditional Integrated Development Environments (IDEs) or debuggers. However, there are some techniques you can use to debug Streamlit apps effectively.
+
+1. Using `st.write()`:
+   Streamlit provides the `st.write()` function, which you can use to print the values of variables, data, or any information you want to inspect while running the app. You can place `st.write()` statements at different points in your code to see the intermediate values and identify any issues.
+
+   Example:
+
+   ```python
+   import streamlit as st
+
+   def my_function(input_value):
+       intermediate_result = input_value * 2
+       st.write("Intermediate Result:", intermediate_result)
+       final_result = intermediate_result + 10
+       return final_result
+
+   user_input = st.slider("Enter a value:", 1, 100)
+   result = my_function(user_input)
+   st.write("Final Result:", result)
+   ```
+
+2. Using `print()` for Terminal Output:
+   If you run the Streamlit app from the terminal or command prompt, you can use the `print()` function to display messages, errors, or any information directly in the terminal.
+
+3. Leveraging Logging:
+   Streamlit applications run in the terminal or command prompt, so you can use Python's logging module to create log messages for debugging purposes. Set up a logging configuration to control the output level and format of log messages.
+
+   Example:
+
+   ```python
+   import logging
+
+   logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
+
+   def my_function(input_value):
+       intermediate_result = input_value * 2
+       logging.debug("Intermediate Result: %s", intermediate_result)
+       final_result = intermediate_result + 10
+       return final_result
+
+   user_input = st.slider("Enter a value:", 1, 100)
+   result = my_function(user_input)
+   logging.info("Final Result: %s", result)
+   ```
+
+4. Using "print()" in Browser Developer Tools:
+   While Streamlit apps run in the browser, you can open the browser's Developer Tools (usually by pressing F12) and check the console log. Any `print()` statements in your Streamlit app will be displayed there.
+
+5. Offline Debugging:
+   You can run your Streamlit app locally without a server and test it as a regular Python script. This way, you can leverage standard debugging tools available in your Python IDE to step through the code, set breakpoints, and inspect variables.
+
+Keep in mind that Streamlit is primarily designed for fast and interactive data exploration and visualization rather than extensive debugging. If you encounter complex issues, consider testing and debugging specific parts of your code outside the Streamlit app before integrating them into your Streamlit application.
+
+
+Team USA have been under continual attack throughout the World Cup with their own country turning on them over their actions.
+
