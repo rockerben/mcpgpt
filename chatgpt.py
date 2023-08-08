@@ -1,7 +1,12 @@
-import os
-import streamlit as st
-from langchain.document_loaders import TextLoader
 from langchain.indexes import VectorstoreIndexCreator
+from langchain.document_loaders import TextLoader
+import streamlit as st
+import sys
+import os
+__import__('pysqlite3')
+
+
+sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
 
 # Load OpenAI API key from environment variable
 openai_api_key = os.environ.get("OPENAI_API_KEY")
