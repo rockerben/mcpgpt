@@ -12,6 +12,7 @@ if openai_api_key is None:
 # Set OpenAI API key
 os.environ["OPENAI_API_KEY"] = openai_api_key
 
+
 def query_index(query):
     # Read the data from 'data.txt' every time a query is performed.
     loader = TextLoader('data.txt')
@@ -25,11 +26,12 @@ def query_index(query):
 
     return index.query(query)
 
+
 def main():
-    st.title("Language Index Query App")
+    st.title("MCP Helpdesk AI")
 
     # User input for the query
-    query = st.text_input("Enter your query:")
+    query = st.text_input("Enter your question:")
 
     if query:
         # Perform the query and get the results
@@ -37,10 +39,11 @@ def main():
 
         # Display the query results
         if result:
-            st.subheader("Query Results:")
+            st.subheader("Possible solution:")
             st.write(result)
         else:
             st.warning("No results found for the query.")
+
 
 if __name__ == "__main__":
     main()
