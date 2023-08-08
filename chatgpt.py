@@ -1,29 +1,16 @@
 import os
 import streamlit as st
-
-
-#import api
 from langchain.document_loaders import TextLoader
 from langchain.indexes import VectorstoreIndexCreator
 
+# Load OpenAI API key from environment variable
+openai_api_key = os.environ.get("OPENAI_API_KEY")
 
-
-# Load API key from environment variable
-api_key = os.environ.get("OPENAI_API_KEY")
-
-if api_key is None:
+if openai_api_key is None:
     raise ValueError("OPENAI_API_KEY not found in environment variables")
 
-
-
-# Set your OpenAI API key
-#os.environ["OPENAI_API_KEY"] = api.APIKEY
-
-
-def create_index():
-    # This function is not needed anymore since we will read the data each time we perform a query.
-    pass
-
+# Set OpenAI API key
+os.environ["OPENAI_API_KEY"] = openai_api_key
 
 def query_index(query):
     # Read the data from 'data.txt' every time a query is performed.
@@ -37,7 +24,6 @@ def query_index(query):
         print("Value of 'data.txt':", data_content)
 
     return index.query(query)
-
 
 def main():
     st.title("Language Index Query App")
@@ -55,7 +41,6 @@ def main():
             st.write(result)
         else:
             st.warning("No results found for the query.")
-
 
 if __name__ == "__main__":
     main()
