@@ -1,11 +1,23 @@
 import os
 import streamlit as st
-import api
+
+
+#import api
 from langchain.document_loaders import TextLoader
 from langchain.indexes import VectorstoreIndexCreator
 
+
+
+# Load API key from environment variable
+api_key = os.environ.get("OPENAI_API_KEY")
+
+if api_key is None:
+    raise ValueError("OPENAI_API_KEY not found in environment variables")
+
+
+
 # Set your OpenAI API key
-os.environ["OPENAI_API_KEY"] = api.APIKEY
+#os.environ["OPENAI_API_KEY"] = api.APIKEY
 
 
 def create_index():
